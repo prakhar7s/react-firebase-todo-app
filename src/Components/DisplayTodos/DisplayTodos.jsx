@@ -31,7 +31,7 @@ const DisplayTodos = () => {
 
   return (
     <div className="display-todos">
-      <h1>Display Todo</h1>
+      <h1 className="heading">Display Todo</h1>
 
       {todos.map((todo) => (
         <TodoItem key={todo.id} todo={todo} />

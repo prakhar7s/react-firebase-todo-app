@@ -4,14 +4,15 @@ import "./AddTodo.scss";
 
 import { firestore } from "../../Firebase/firebase";
 
-const AddTodo = () => {
+const AddTodo = (props) => {
   const addTodoLoading = useRef();
 
   const addTodoToDB = async (e) => {
     const formEle = e.target;
     e.preventDefault();
 
-    const [todoName] = formEle.elements;
+    const [todoName, HH, MM, SS] = formEle.elements;
+    const time = `${HH.value}:${MM.value}:${SS.value}`;
 
     if (todoName.value.length === 0) {
       return;
@@ -19,9 +20,10 @@ const AddTodo = () => {
 
     const objToStore = {
       todoName: todoName.value,
+      time,
     };
 
-    addTodoLoading.current.style.display = "block";
+    addTodoLoading.current.style.display = "grid";
     console.log(todoName.value);
 
     // Add to do to the database
@@ -37,6 +39,7 @@ const AddTodo = () => {
       .catch((err) => console.err(err));
 
     addTodoLoading.current.style.display = "none";
+    props.history.push("all-todos");
   };
 
   const addFocus = (e) => {
@@ -84,9 +87,52 @@ const AddTodo = () => {
             type="text"
           />
         </div>
+
+        <div className="input-time">
+          <div className="inputItem">
+            <span>HH</span>
+            <input
+              onFocus={(e) => addFocus(e)}
+              onBlur={(e) => removeFocus(e)}
+              type="number"
+              max="23"
+              min="0"
+              maxLength="2"
+            />
+          </div>
+          <div className="inputItem">
+            <span>MM</span>
+            <input
+              onFocus={(e) => addFocus(e)}
+              onBlur={(e) => removeFocus(e)}
+              type="number"
+              max="59"
+              min="0"
+              maxLength="2"
+            />
+          </div>
+          <div className="inputItem">
+            <span>SS</span>
+            <input
+              onFocus={(e) => addFocus(e)}
+              onBlur={(e) => removeFocus(e)}
+              type="number"
+              max="59"
+              min="0"
+              maxLength="2"
+            />
+          </div>
+        </div>
+
         <input type="submit" style={{ display: "none" }} />
       </form>
-      <div ref={addTodoLoading} className="add-todo-loading"></div>
+      <div ref={addTodoLoading} className="add-todo-loading">
+        <div className="loader">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
     </div>
   );
 };
