@@ -1,0 +1,56 @@
+.add-todo {
+  .heading {
+    margin: 10px;
+  }
+
+  form {
+    padding: 10px;
+
+    .inputItem {
+      position: relative;
+
+      input[type="text"] {
+        padding: 12px 20px;
+        outline: none;
+        font-size: 16px;
+      }
+
+      span {
+        position: absolute;
+        font-size: 14px;
+        left: 18px;
+        top: 10px;
+        transition: transform 0.7s;
+        pointer-events: none;
+      }
+
+      &.focussed {
+        input[type="text"] {
+          border: 1px solid #00800060;
+        }
+
+        span {
+          transform: translateY(-22px);
+          background: white;
+          padding: 4px;
+          color: green;
+        }
+      }
+    }
+  }
+
+  .add-todo-loading {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px dashed green;
+    animation: rotate 1s infinite;
+    display: none;
+
+    @keyframes rotate {
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}

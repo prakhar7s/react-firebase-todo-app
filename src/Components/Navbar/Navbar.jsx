@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 
 // Styles
@@ -12,15 +12,6 @@ import "./Navbar.scss";
 */
 
 const Navbar = () => {
-  // useEffect(() => {
-  //     firestore
-  //       .collection("colle")
-  //       .doc()
-  //       .set({ s: "s" })
-  //       .then(() => {})
-  //       .catch((error) => console.error(error));
-  //   }, []);
-
   return (
     <div className="navbar">
       <NavLink activeClassName="active-tab" to="/add-todo">
