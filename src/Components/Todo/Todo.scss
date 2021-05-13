@@ -1,0 +1,13 @@
+.todo-container {
+  height: 100vh;
+  background: #f5f5f5;
+  display: grid;
+  place-items: center;
+
+  .todo {
+    width: 90%;
+    height: 90%;
+    background: white;
+    box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.9);
+  }
+}

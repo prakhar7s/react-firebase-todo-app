@@ -1,0 +1,16 @@
+.navbar {
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+  .active-tab {
+    border-bottom: 1px solid salmon;
+  }
+
+  a {
+    text-decoration: none;
+    margin: 20px;
+    color: black;
+    padding: 10px 15px;
+  }
+}
