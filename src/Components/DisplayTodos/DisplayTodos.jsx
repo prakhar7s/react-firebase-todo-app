@@ -9,7 +9,7 @@ const DisplayTodos = () => {
 
   useEffect(() => {
     const unsubscribe = firestore.collection("todos").onSnapshot((todos) => {
-      if (todos.docs.length) {
+      if (!todos.empty) {
         const temp = todos.docs.map((todo) => ({
           ...todo.data(),
           id: todo.id,
@@ -17,6 +17,11 @@ const DisplayTodos = () => {
         setTodos(temp);
       } else {
         //no todos
+        /*
+          If we don't set todos as [] here then it will
+          make problems in when we delete our last todo.
+        */
+        setTodos([]);
       }
     });
 
@@ -31,11 +36,13 @@ const DisplayTodos = () => {
 
   return (
     <div className="display-todos">
-      <h1 className="heading">Display Todo</h1>
+      {/* <h1 className="heading">Display Todo</h1> */}
 
       {todos.map((todo) => (
         <TodoItem key={todo.id} todo={todo} />
       ))}
+
+      {todos.length === 0 ? <h1>No todos</h1> : null}
     </div>
   );
 };

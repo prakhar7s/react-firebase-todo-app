@@ -21,6 +21,7 @@ const AddTodo = (props) => {
     const objToStore = {
       todoName: todoName.value,
       time,
+      important: false,
     };
 
     addTodoLoading.current.style.display = "grid";

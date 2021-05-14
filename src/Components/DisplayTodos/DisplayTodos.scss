@@ -1,4 +1,13 @@
 .display-todos {
+  height: 535px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  overflow: scroll;
+  overflow-x: hidden;
+
   .heading {
     margin: 10px;
   }

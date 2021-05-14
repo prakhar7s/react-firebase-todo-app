@@ -15,8 +15,13 @@
 
       input {
         padding: 12px 20px;
+        width: 420px;
         outline: none;
         font-size: 16px;
+
+        @media (max-width: 500px) {
+          width: 245px;
+        }
 
         &:invalid {
           border: 1px solid #fd4a2b60;
@@ -53,12 +58,20 @@
       .inputItem {
         margin: 0 15px;
 
+        @media (max-width: 500px) {
+          margin: 0 9px;
+        }
+
         &:first-child {
           margin-left: 0;
         }
 
         input {
           width: 120px;
+
+          @media (max-width: 500px) {
+            width: 70px;
+          }
 
           &:invalid {
             border: 1px solid #fd4a2b95;
@@ -85,28 +98,33 @@
       span {
         width: 7px;
         height: 40px;
-        background: rgba(0, 0, 0, 0.4);
+        /*
+          Always remember whenever adding animation-deplay property it's
+          values should be less than the value of animation time
+          otherwise it wouldn't work :)
+        */
+        transition: background 0.2s;
+        animation: changeColor 0.4s;
+        animation-iteration-count: infinite;
+        background: rgb(248, 106, 50);
 
         &:nth-child(1) {
-          animation: changeColor 1s infinite;
+          animation-delay: 0.1s;
         }
 
         &:nth-child(2) {
-          animation: changeColor 2s infinite;
+          animation-delay: 0.2s;
         }
 
         &:nth-child(3) {
-          animation: changeColor 1s infinite;
+          animation-delay: 0.3s;
         }
       }
     }
 
     @keyframes changeColor {
-      80% {
-        background: rgba(0, 0, 0, 0.4);
-      }
       100% {
-        background: orange;
+        background: rgba(0, 0, 0, 0.4);
       }
     }
   }
