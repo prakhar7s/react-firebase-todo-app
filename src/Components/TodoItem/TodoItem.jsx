@@ -13,10 +13,6 @@ const TodoItem = (props) => {
 
   const todoDocRef = firestore.collection("todos").doc(id);
 
-  const importantButtonStyles = {
-    color: "gold",
-  };
-
   const changeImportance = () => {
     /*
       Every todo doc contains one variable called
@@ -35,7 +31,7 @@ const TodoItem = (props) => {
         important: !important,
       })
       .then(() => {
-        console.log("importance updated");
+        // console.log("importance updated");
       })
       .catch((err) => console.error(err));
   };
@@ -49,20 +45,16 @@ const TodoItem = (props) => {
     await todoDocRef
       .delete()
       .then(() => {
-        console.log("todo deleted");
+        // console.log("todo deleted");
       })
       .catch((err) => console.error(err));
   };
 
   return (
-    <div className="todo-item">
+    <div className={`todo-item${important ? " imp" : ""}`}>
       <header>
         <div className="options">
-          <div
-            onClick={changeImportance}
-            style={important ? importantButtonStyles : null}
-            className="option"
-          >
+          <div onClick={changeImportance} className="option">
             <StarBorderRoundedIcon />
           </div>
 
