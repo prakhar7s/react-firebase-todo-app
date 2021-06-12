@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { NavLink } from "react-router-dom";
 
 // Styles
@@ -12,6 +12,8 @@ import "./Navbar.scss";
 */
 
 const Navbar = () => {
+  const resultsContainer = useRef();
+
   const showSearchedResults = () => {
     console.log("Hello");
   };
@@ -28,7 +30,9 @@ const Navbar = () => {
         <input type="search" onFocus={showSearchedResults} />
       </form>
 
-      <div className="search-results-container">sdadsasd</div>
+      <div ref={resultsContainer} className="search-results-container">
+        <div className="search-results">sdadsasd</div>
+      </div>
     </div>
   );
 };
