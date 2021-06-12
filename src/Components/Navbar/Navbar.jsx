@@ -12,6 +12,10 @@ import "./Navbar.scss";
 */
 
 const Navbar = () => {
+  const showSearchedResults = () => {
+    console.log("Hello");
+  };
+
   return (
     <div className="navbar">
       <NavLink activeClassName="active-tab" to="/add-todo">
@@ -20,6 +24,11 @@ const Navbar = () => {
       <NavLink activeClassName="active-tab" to="/all-todos">
         Todos
       </NavLink>
+      <form>
+        <input type="search" onFocus={showSearchedResults} />
+      </form>
+
+      <div className="search-results-container">sdadsasd</div>
     </div>
   );
 };

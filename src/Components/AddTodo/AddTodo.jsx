@@ -37,7 +37,7 @@ const AddTodo = (props) => {
         formEle.reset();
         console.log("created");
       })
-      .catch((err) => console.err(err));
+      .catch((err) => console.error(err));
 
     addTodoLoading.current.style.display = "none";
     props.history.push("all-todos");
